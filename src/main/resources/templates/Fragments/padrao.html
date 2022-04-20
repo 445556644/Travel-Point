@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleafe.org">
+<head>
+<meta charset="utf-8">
+<title>Html Padrão</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+
+	<nav th:fragment="navBar"
+		class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#">Story Point</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div th:if="${session.usuarioLogado != null}"
+			class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+
+
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/listarTiposLojas/1}">Tipos</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/listarLojas/1}">Loja</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/listarAdmin/1}">Admistradores</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/LogOut}"><i
+						class="material-icons">exit_to_app</i> </a></li>
+
+
+			</ul>
+			<!--  <form action="/buscar" class="form-inline my-2 my-lg-0">
+			<input name="busca" class="form-control mr-sm-2" type="search"
+				placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0 bg-primary"
+				type="submit">Busque</button> -->
+		</div>
+	</nav>
+
+
+
+
+	<div th:fragment="rodape" class="card">
+		<div class="footer">
+			<div class="card-header">
+				<a href="">Cadastre</a>
+			</div>
+			<div class="card-body">
+				<blockquote class="blockquote mb-0">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Integer posuere erat a ante.</p>
+					<footer class="blockquote-footer">
+						João, © 2022 Copyright Text <cite title="Source Title"></cite>
+					</footer>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

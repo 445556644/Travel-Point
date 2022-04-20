@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleafe.org">
+<head>
+<meta charset="utf-8">
+<link rel="shortcut icon" type="imagex/png" href="carro.png">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link rel="shortcut icon" type="imagex/png" href="img.jpg">
+
+
+<style type="text/css">
+.table-bordered {
+	
+	margin: 0 auto;
+	width: 80%;
+}
+
+.table {
+	margin-top: 100px;
+}
+
+.linkForm {
+	text-align: center;
+}
+
+i {
+	color: rgb(61, 157, 179);;
+}
+
+.page-footer {
+	background: rgb(61, 157, 179);
+}
+
+.nav-wrapper {
+	background: rgb(61, 157, 179);
+}
+
+th {
+	padding: 20px;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	color: blue;
+}
+
+h1 {
+	font-family: verdana;
+	text-align: center;
+}
+
+table {
+	padding: 10px;
+	margin-top: 80px;
+}
+
+.brand-logo {
+	padding: 12px;
+}
+
+.linkForm {
+	text-transform: uppercase;
+	color: black;
+	margin-left: 750px;
+}
+
+.linkForm:hover {
+	color: rgb(61, 157, 179);
+}
+
+.material-icons {
+	color: black;
+}
+
+.material-icons:hover {
+	color: #0077b6;
+}
+</style>
+<title>Lista De Lojas</title>
+</head>
+<body>
+
+	<nav  th:replace="fragments/padrao :: navBar"></nav>
+
+
+
+	
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+
+				<th scope="col">Tipo Da Loja</th>
+				<th scope="col">NOME</th>
+				<th scope="col">Descrição</th>
+				<th scope="col">Redes Sociais</th>
+				<th scope="col">Alterar</th>
+				<th scope="col">Excluir</th>
+				<th scope="col">Ver Mais</th>
+
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="l:${loja}">
+
+				<td th:text="${l.tipoHotel?.nome}"></td>
+				<td th:text="${l.nome}"></td>
+				<td th:text="${l.descricao}"></td>
+				<td th:text="${l.redesSociais}"></td>
+
+				<td><a th:href="@{/alterarHotel(id=${l.id})}"><i
+						class="material-icons">create</i></a></td>
+				<td><a th:href="@{/excluirHotel(id=${l.id})}"><i
+						class="material-icons">delete</i></a></td>
+				<td><a th:href="@{/visualizar(id=${l.id})}"><i
+						class="material-icons">remove_red_eye</i></a></td>
+
+
+			</tr>
+
+		</tbody>
+	</table>
+
+
+
+	<ul class="pagination">
+		<!-- verifica se a pagina atual é igual ao total de paginas disabilita a seta para esquerda -->
+		<li th:class="${pgAtual == 1 ? 'disabled' : ''}"><a
+			th:href="${pgAtual > 1 ? pgAtual - 1 : '#'}"> <i
+				class="material-icons">chevron_left</i></a></li>
+		<!-- da o efeito na pagina atual -->
+		<li th:each="paginas:${numPg}"
+			th:class="${pgAtual == paginas ? 'active blue': ''}"><a
+			th:href="${paginas}"> <span th:text="${paginas}"></span></a></li>
+		<!-- verifica se a pagina atual é igual ao total de paginas disabilita a seta para direita -->
+		<li th:class="${pgAtual == numTotalPg ? 'disabled' : ''}"><a
+			th:href="${pgAtual < numTotalPg ? pgAtual+1: '' }"><i
+				class="material-icons">chevron_right</i></a></li>
+	</ul>
+
+
+</body>
+</html>

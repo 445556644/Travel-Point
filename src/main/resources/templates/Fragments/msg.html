@@ -1,0 +1,15 @@
+<!DoCTYPE html>
+<html xmlns:th="http://thymeleafe.org">
+<body>
+
+<div class="alertaMsgE erro" th:if="${not #strings.isEmpty(msgErro)}">
+    <span th:text="${msgErro}"></span>
+    </div>
+       <div class="alertaMsgS" th:if="${not #strings.isEmpty(msgSucesso)}">
+       <span th:text="${msgSucesso}"></span>
+       </div>
+
+</body>
+
+
+</html>

@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleafe.org">
+
+<head>
+<link rel="shortcut icon" type="imagex/png" href="carro.png">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<meta charset="UTF-8">
+
+<title>Point Car</title>
+
+<style type="text/css">
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.bloco {
+	border-radius: 20px;
+	padding: 20px;
+	align-items: center;
+	width: 80%;
+	margin: 60px auto;
+	background-image: url(loja.jpg);
+	background-position: center;
+	background-size: cover;
+}
+
+.bloco-direita img {
+	border-radius: 20px;
+	width: 30%;
+	float: right;
+}
+
+button {
+	border-radius: 12px;
+	cursor: pointer;
+	border: none;
+	background-color: white;
+	color: black;
+	padding: 12px;
+	width: 140px;
+}
+
+h1 {
+	margin-bottom: 30px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 50px;
+	text-align: center;
+	color: #fca311;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+input {
+	border-radius: 12px;
+	outline: none;
+	border: none;
+	padding: 14px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 35%;
+}
+
+label {
+	font-size: 20px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: bold;
+	color: white;
+}
+
+placeholder {
+	color: blue;
+}
+
+button:hover {
+	background-color: #0077b6;
+	color: white;
+}
+</style>
+
+
+<nav th:replace="fragments/padrao :: navBar"></nav>
+
+<div class="bloco">
+
+	<form method="post" action="salvarTipo">
+
+
+		<label>Tipo Da Loja</label> <input th:value="${loja?.nome}"
+			name="nome" required="required" id="nome" type="text"
+			placeholder="Tipo Do Hotel"> <label>Palavra Chave</label> <input
+			th:value="${loja?.palavrasChave}" name="palavrasChave"
+			required="required" type="text" placeholder="Ex: 5 Estrelas">
+	
+
+
+		<button type="submit">Salvar</button>
+
+	</form>
+
+</div>
+
+<footer th:replace="fragments/padrao :: rodape"></footer>
+
+
+
+
+
+</body>
+</html>
