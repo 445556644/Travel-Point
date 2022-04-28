@@ -8,5 +8,7 @@ public interface AdminRepository extends PagingAndSortingRepository<Administrado
 
 	// metodo que faz a busca por email e senha no bd
 		public Administrador findByEmailAndSenha(String email, String senha);
+		
+		public Administrador findByNome(String nome);
 	
 }

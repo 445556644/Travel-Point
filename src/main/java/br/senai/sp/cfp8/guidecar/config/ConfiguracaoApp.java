@@ -9,22 +9,29 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import br.senai.sp.cfp8.guidecar.interceptor.AppInterceptor;
 
 @Configuration
-public class ConfiguracaoApp implements WebMvcConfigurer{
-	
+public class ConfiguracaoApp implements WebMvcConfigurer {
+
 	@Autowired
 	private AppInterceptor interceptor;
-	
+
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+
+		WebMvcConfigurer.super.addCorsMappings(registry);
+	}
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 
-	registry.addInterceptor(interceptor);
-	
+		registry.addInterceptor(interceptor);
+
 	}
 
 	@Bean
@@ -39,7 +46,7 @@ public class ConfiguracaoApp implements WebMvcConfigurer{
 
 		return dataSource;
 	}
-	
+
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 

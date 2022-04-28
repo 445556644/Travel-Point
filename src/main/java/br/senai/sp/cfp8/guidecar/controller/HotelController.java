@@ -97,7 +97,7 @@ public class HotelController {
 
 		// cria uma pagina que começa na 0, que possuem 6 elementos por paginas e ordena
 		// pelo nome
-		PageRequest pageble = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.ASC, "nome"));
+		PageRequest pageble = PageRequest.of(page - 1, 1, Sort.by(Sort.Direction.ASC, "nome"));
 
 		// cria a pagina atual atraves do repository
 
@@ -193,19 +193,19 @@ public class HotelController {
 	}
 
 	@Privado
-	@RequestMapping("verCaixa")
+	@RequestMapping("verMais")
 	public String verCaixa() {
 
-		return "Hotel/caixa";
+		return "Hotel/Detalhes";
 	}
 
 	@Privado
-	@RequestMapping("visualizar")
+	@RequestMapping("detalhes")
 	public String mostrarCaixa(Model model, Long id) {
 
 		model.addAttribute("mostrar", hotelRepository.findById(id).get());
 
-		return "forward:verCaixa";
+		return "forward:verMais";
 	}
 
 }

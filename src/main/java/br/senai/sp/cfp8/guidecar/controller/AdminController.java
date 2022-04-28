@@ -183,5 +183,13 @@ public class AdminController {
 		
 		return"redirect:/";
 	}
+	
+	@RequestMapping("buscar")
+	public String buscar(String nome) {
+		
+		repAdm.findByNome(nome);
+		
+		return "Admin/ListaAdmin";
+	}
 
 }

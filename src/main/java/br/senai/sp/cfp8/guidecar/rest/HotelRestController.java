@@ -2,19 +2,16 @@ package br.senai.sp.cfp8.guidecar.rest;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.senai.sp.cfp8.guidecar.anotation.Publico;
 import br.senai.sp.cfp8.guidecar.model.Hotel;
-import br.senai.sp.cfp8.guidecar.model.TipoHotel;
 import br.senai.sp.cfp8.guidecar.repository.HotelRepository;
-import br.senai.sp.cfp8.guidecar.repository.TipoHotelRepository;
+
 
 @RestController
 @RequestMapping("/api/hotel")
@@ -56,13 +53,11 @@ public class HotelRestController {
 		return hotelRepository.findByTipoHotelId(idTipo);
 
 	}
-	
+
 	@RequestMapping(value = "/estado/{estado}", method = RequestMethod.GET)
-	public List<Hotel> getEstado(@PathVariable("estado") String estado){
-		
+	public List<Hotel> getEstado(@PathVariable("estado") String estado) {
+
 		return hotelRepository.findByEstado(estado);
 	}
-	
-	
 
 }

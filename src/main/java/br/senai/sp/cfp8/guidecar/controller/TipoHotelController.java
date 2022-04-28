@@ -106,13 +106,5 @@ public class TipoHotelController {
 		return "redirect:listarLojas/1";
 	}
 
-	// metodo que faz a busca pela palvra chave cadastrada
-	@RequestMapping("buscar")
-	@Privado
-	public String buscarPorpalavraChave(Model model, String busca) {
-
-		model.addAttribute("tipoLoja", tipoLojaRepository.buscarPalavraChave(busca));
-
-		return "Tipos/Lista";
-	}
+	
 }

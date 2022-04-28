@@ -79,7 +79,7 @@
 									<li class="nav-item"><a class="nav-link" href="#contato">Contato</a>
 									</li>
 									<li class="nav-item"><a class="nav-link" href="/LogOut"><i
-											class="material-icons"></i>log_out</a></li>
+											class="material-icons">exit_to_app</i></a></li>
 								</ul>
 							</div>
 						</nav>
@@ -183,7 +183,7 @@
 				<div class="col-md-12">
 					<div class="titlepage">
 						<h2 id="lista">Hoteis</h2>
-						<p>Lorem Ipsum available, but the majority have suffered</p>
+						<p>Os Melhores Da Região</p>
 					</div>
 				</div>
 			</div>
@@ -197,13 +197,29 @@
 						</div>
 						<div class="bed_room">
 							<h3 th:text="${h.nome}"></h3>
-							<p th:text="${h.descricao}"></p>
-							<p>Ver Mais</p>
+							<a th:text="${h.descricao}"></a> <br> <a
+								th:href="@{/detalhes(id=${h.id})}">Ver Mais</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
+		<ul class="pagination">
+			<!-- verifica se a pagina atual é igual ao total de paginas disabilita a seta para esquerda -->
+			<li th:class="${pgAtual == 1 ? 'disabled' : ''}"><a
+				th:href="${pgAtual > 1 ? pgAtual - 1 : '#'}"> <i
+					class="material-icons">chevron_left</i></a></li>
+			<!-- da o efeito na pagina atual -->
+			<li th:each="paginas:${numPg}"
+				th:class="${pgAtual == paginas ? 'active blue': ''}"><a
+				th:href="${paginas}"> <span th:text="${paginas}"></span></a></li>
+			<!-- verifica se a pagina atual é igual ao total de paginas disabilita a seta para direita -->
+			<li th:class="${pgAtual == numTotalPg ? 'disabled' : ''}"><a
+				th:href="${pgAtual < numTotalPg ? pgAtual+1: '' }"><i
+					class="material-icons">chevron_right</i></a></li>
+		</ul>
 	</div>
 
 	<!-- gallery -->
@@ -356,16 +372,15 @@
 					<form id="request" class="main_form">
 						<div class="row">
 							<div class="col-md-12 ">
-								<input class="contactus" placeholder="Nome" type="text"
-									name="Name">
+								<input class="contactus" placeholder="Nome" type="text" name="">
 							</div>
 							<div class="col-md-12">
 								<input class="contactus" placeholder="Email" type="email"
-									name="Email">
+									name="">
 							</div>
 							<div class="col-md-12">
 								<input class="contactus" placeholder="Telefone" type="text"
-									name="Phone Number">
+									name="">
 							</div>
 							<div class="col-md-12">
 								<textarea class="textarea" placeholder="Message">Message</textarea>
@@ -406,23 +421,12 @@
 								href="#"> joaopedrogomesdasilva.1764@gmail.com</a></li>
 						</ul>
 					</div>
-					<div class="col-md-4">
-						<h3>Menu Link</h3>
-						<ul class="link_menu">
-							<li class="active"><a href="#">Home</a></li>
-							<li><a href="about.html"> about</a></li>
-							<li><a href="room.html">Our Room</a></li>
-							<li><a href="gallery.html">Gallery</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact Us</a></li>
-						</ul>
-					</div>
+
 					<div class="col-md-4">
 						<h3>Novas Cartas</h3>
 						<form class="bottom_form">
-							<input class="enter" placeholder="Enter your email" type="text"
-								name="Insira Seu email">
-							<button class="sub_btn">Inscreva-se</button>
+							<input class="enter" placeholder="Insira Seu email" type="text">
+							<button type="submit" class="sub_btn">Inscreva-se</button>
 						</form>
 						<ul class="social_icon">
 							<li><a href="#"><i class="fa fa-facebook"

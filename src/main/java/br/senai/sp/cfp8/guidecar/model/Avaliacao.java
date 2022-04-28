@@ -1,32 +1,32 @@
 package br.senai.sp.cfp8.guidecar.model;
-import javax.persistence.Column;
+
+import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
-import br.senai.sp.cfp8.guidecar.util.HashUtil;
 import lombok.Data;
 
 @Data
 @Entity
-public class Usuario {
-
+public class Avaliacao {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
-	@Column(unique = true)
-	private String email;
-	// faz com que o set senha exista,e nao chame o get senha
+	@ManyToOne
 	@JsonProperty(access = Access.WRITE_ONLY)
-	private String senha;
+	private Hotel hotel;
+	@JsonFormat(pattern = "dd-MM-yyyy")
+	private Calendar dataVisita;
+	private String comentario;
+	private double nota;
+	@ManyToOne
+	private Usuario usuario;
 	
-	public void setSenhaComHash(String senha) {
-		
-		this.senha = HashUtil.hash256(senha);
-	}
 }
